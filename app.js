@@ -1,8 +1,10 @@
 const fs = require('fs');
+const https = require('node:https');
 const express = require('express'); 
 const app = express(); 
 
-const PORT = 3000; 
+const PORT = process.env.PORT;
+
 const filePath = 'public/pageAccessCount.json';
 
 function incrementPageAccessCount() {
@@ -40,7 +42,7 @@ function incrementPageAccessCount() {
 function myHandler(req, res, next)
 {
   incrementPageAccessCount();
-  next('route')
+  next();
 }
 
 app.use('/index.css',myHandler);
@@ -48,11 +50,30 @@ app.use('/index.css',myHandler);
 
 app.use('/',express.static('public'));
 
-
-app.listen(PORT, (error) =>{ 
+function errorhandler(error)
+{
     if(!error) 
-        console.log("Server is Successfully Running,  and App is listening on port "+ PORT) 
+    {
+        console.log("Server is Successfully Running,  and App is listening on port "+ PORT) ;
+    }
     else 
+    {
         console.log("Error occurred, server can't start", error); 
     } 
-); 
+}
+
+if (PORT == 443)
+{
+    const options = {
+        key: fs.readFileSync('cert.key'),
+        cert: fs.readFileSync('cert.crt'),
+    };
+    
+    const httpsServer = https.createServer(options, app);
+
+    httpsServer.listen(PORT, errorhandler); 
+}
+else
+{
+    app.listen(PORT, errorhandler); 
+}
