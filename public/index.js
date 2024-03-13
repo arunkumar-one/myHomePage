@@ -52,7 +52,7 @@ window.onload = function() {
         nav.addEventListener("click", switchContent);
     }
 
-    jQuery.get("http://192.168.0.110:3000/pageAccessCount.json",function(resp){
+    jQuery.get("https://www.arunkumarkg.com/pageAccessCount.json",function(resp){
         let date = new Date(resp.from);
         let formatDate = getMonthName(date.getMonth())+"&nbsp;"+ date.getDate()+",&nbsp;"+date.getFullYear();
 

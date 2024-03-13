@@ -65,8 +65,8 @@ function errorhandler(error)
 if (PORT == 443)
 {
     const options = {
-        key: fs.readFileSync('cert.key'),
-        cert: fs.readFileSync('cert.crt'),
+        key: fs.readFileSync('/etc/letsencrypt/live/arunkumarkg.com/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/arunkumarkg.com/fullchain.pem'),
     };
     
     const httpsServer = https.createServer(options, app);
