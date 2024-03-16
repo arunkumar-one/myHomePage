@@ -42,8 +42,6 @@ window.onload = function() {
 
     navList = document.querySelectorAll('.nav > *');
     currentNav = navList[0]
-    // currentNav.style.border="6px solid hsl(66, 100%, 98%)";
-    // currentNav.style.backgroundColor = "hsl(66, 100%, 98%)";
     currentNav.style.padding="10px";
 
 
@@ -52,9 +50,7 @@ window.onload = function() {
         nav.addEventListener("click", switchContent);
     }
 
-	let  domain = window.location.hostname;
-
-    jQuery.get("https://"+domain+"/pageAccessCount.json",function(resp){
+    jQuery.get("/pageAccessCount.json",function(resp){
         let date = new Date(resp.from);
         let formatDate = getMonthName(date.getMonth())+"&nbsp;"+ date.getDate()+",&nbsp;"+date.getFullYear();
 

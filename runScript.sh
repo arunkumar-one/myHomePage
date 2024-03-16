@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-stopPort()
+stop()
 {
     local PORT=$1
     if [ -f "node_$PORT.pid" ];then
@@ -11,25 +11,12 @@ stopPort()
 }
 
 
-startPort()
+start()
 {
-    
     stopPort $1
     export PORT=$1
     setsid sudo -E node app.js &
     echo $! > node_$PORT.pid
-}
-
-startAll()
-{
-    startPort 80
-    startPort 443
-}
-
-stopAll()
-{
-    stopPort 80
-    stopPort 443
 }
 
 $@
