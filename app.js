@@ -1,6 +1,8 @@
 const fs = require('fs');
 const https = require('https');
+const http = require('http');
 const express = require('express'); 
+const { error } = require('console');
 const app = express(); 
 
 const PORT = process.env.PORT;
@@ -50,11 +52,11 @@ app.use('/index.css',myHandler);
 
 app.use('/',express.static('public'));
 
-function errorhandler(error)
+function errorhandler(error, port, protocol)
 {
     if(!error) 
     {
-        console.log("Server is Successfully Running,  and App is listening on port "+ PORT) ;
+        console.log(protocol+"Server is Successfully Running,  and App is listening on port "+ port) ;
     }
     else 
     {
@@ -62,18 +64,27 @@ function errorhandler(error)
     } 
 }
 
-if (PORT == 443)
+console.log("Port "+ PORT);
+
+if (PORT == undefined) 
 {
+    let port;
     const options = {
         key: fs.readFileSync('/etc/letsencrypt/live/arunkumarkg.com/privkey.pem'),
         cert: fs.readFileSync('/etc/letsencrypt/live/arunkumarkg.com/fullchain.pem'),
     };
     
     const httpsServer = https.createServer(options, app);
+    port = 443;
+    httpsServer.listen(port, (error) => errorhandler(error,port,"https")); 
 
-    httpsServer.listen(PORT, errorhandler); 
+    const httpServer = http.createServer(options, app);
+    port = 80;
+    httpServer.listen(port, (error) => errorhandler(error,port,"http"))
 }
 else
-{
-    app.listen(PORT, errorhandler); 
+{   
+    const httpServer = http.createServer({}, app);
+    httpServer.listen(PORT, (error) => errorhandler(error,PORT,"http"))
+    // app.listen(PORT, (error) => errorhandler(error,port,"http"));    
 }
