@@ -43,6 +43,7 @@ function incrementPageAccessCount() {
 
 function myHandler(req, res, next)
 {
+	res.removeHeader('ETag');
   incrementPageAccessCount();
   next();
 }
@@ -75,12 +76,10 @@ if (PORT == undefined)
     };
     
     const httpsServer = https.createServer(options, app);
-    port = 443;
-    httpsServer.listen(port, (error) => errorhandler(error,port,"https")); 
+    httpsServer.listen(443, (error) => errorhandler(error,443,"https")); 
 
     const httpServer = http.createServer(options, app);
-    port = 80;
-    httpServer.listen(port, (error) => errorhandler(error,port,"http"))
+    httpServer.listen(80, (error) => errorhandler(error,80,"http"))
 }
 else
 {   
