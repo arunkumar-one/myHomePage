@@ -1,0 +1,48 @@
+
+.heading {
+  background-color: hsl(66, 100%, 98%);
+  padding: 3px;
+}
+
+body {
+  background-color: hsl(199, 50%, 66%);
+}
+
+h1, h2, h3, p {
+  align-content: center;
+  text-align: center;
+}
+
+ol.nav {
+  list-style-type: none;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+}
+
+ol.nav li {
+  margin-left: 0;
+  margin-bottom: 5px;
+  width: fit-content;
+  height: 20px;
+  display: inline-block;
+  size: 20;
+  background-color: rgb(168, 168, 168);
+  border: 1px solid black ;
+  padding: 5px;
+  font-style: bold;
+ 
+}
+
+ol.nav li:hover {
+  background-color: hsl(66, 100%, 98%);  
+}
+
+.content div {
+  display: none;
+}
+
+.redtext {
+  color:rgb(138, 31, 31)
+}

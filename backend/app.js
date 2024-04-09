@@ -1,25 +1,31 @@
 const fs = require('fs');
 const https = require('https');
 const http = require('http');
+const path = require('path');
 const express = require('express'); 
 const { error } = require('console');
+const os = require('os');
+const homePath = os.homedir();
+
+console.log("HomePath : " + homePath);
+
 const app = express(); 
 
 const PORT = process.env.PORT;
 
-const filePath = 'public/pageAccessCount.json';
+const filePath = homePath +'/pageAccessCount.json';
 
-function incrementPageAccessCount() {
+function incrementPageAccessCount(res) {
+    
     if (!fs.existsSync(filePath)) {
+        let obj = { ac : 1, from : new Date() };
 
-      let obj = { ac : 1, from : new Date() };
-
-      fs.writeFile(filePath, JSON.stringify(obj), (err) => {
-        if (err) {
-            console.error('Error saving value:', err);
-            return;
-        }
-    });
+        fs.writeFile(filePath, JSON.stringify(obj), (err) => {
+            if (err) {
+                console.error('Error saving value:', err);
+                return;
+            }
+        });
 
     }
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -27,16 +33,16 @@ function incrementPageAccessCount() {
             console.error('Error reading value:', err);
             return;
         }
-        
-        let obj= JSON.parse(data);
+        let obj = {};
+        obj= JSON.parse(data);
         obj.ac += 1;
 
         fs.writeFile(filePath, JSON.stringify(obj), (err) => {
-          if (err) {
-              console.error('Error saving value:', err);
-              return;
-          }
-      });
+            if (err) {
+                console.error('Error saving value:', err);
+                return;
+            }
+        });
     });
     return;
 }
@@ -44,14 +50,28 @@ function incrementPageAccessCount() {
 function myHandler(req, res, next)
 {
 	res.removeHeader('ETag');
-  incrementPageAccessCount();
+  incrementPageAccessCount(res);
   next();
 }
 
-app.use('/index.css',myHandler);
+function getAccessCountApi(req, res, next) {
+    fs.readFile(filePath, 'utf8', (err, data) => { // Use fs.readFile with a callback function
+        if (err) {
+            console.error('Error reading value:', err);
+            res.writeHead(500, {'Content-Type': 'text/plain'});
+            res.end('Internal Server Error');
+        } else {
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.write(data);
+            res.end();
+        }
+    });
+}
 
+app.use('/accessCountApi',myHandler);
+app.use('/getAccessCountApi',getAccessCountApi);
 
-app.use('/',express.static('public'));
+app.use(express.static(path.join(__dirname,"..","frontend", 'build')));
 
 function errorhandler(error, port, protocol)
 {
