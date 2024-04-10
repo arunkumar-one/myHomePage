@@ -50,7 +50,8 @@ function incrementPageAccessCount(res) {
 function myHandler(req, res, next)
 {
 	res.removeHeader('ETag');
-  incrementPageAccessCount(res);
+    incrementPageAccessCount(res);
+    res.status(200).json({ success: true, message: 'API call was successful' });
   next();
 }
 
