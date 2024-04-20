@@ -17,7 +17,7 @@
             background-color: hsl(199, 50%, 66%);
         }
 
-        h1, h2, h3, p {
+        h1, h2, h3 {
             align-content: center;
             text-align: center;
         }
@@ -51,6 +51,18 @@
         .content div {
             display: none;
         }
+
+        a:visited {
+            color: hsl(66, 100%, 98%);
+        }
+
+        a:link {
+            color: hsl(66, 100%, 98%);
+        }
+
+        a:active {
+            color: rgb(168, 168, 168);
+        }
     </style>
   </head>
   <body>  
@@ -58,12 +70,12 @@
         <div class="heading">
             <h1 id="heading"> Arun's HomePage </h1>
             <h3> Welcome to my page !! &#128522; </h3>
-            <p id="valueFromServer"></p> 
+            
         </div>
         
         <ol class="nav">
             <li>AboutMe</li>
-            <!-- <li>Skills</li> -->
+            <li>Skills</li>
             <li>Books<span style="color:rgb(138, 31, 31)">R</span>ed</li>
         </ol>
 
@@ -72,37 +84,42 @@
         <div class="content">
             <div >
         
-                <p> I'm a Software Engineer at <a href="https://www.zohocorp.com/">Zoho corporation ltd</a>. 
-                I studied Bachelor of Engineering in Electronics and Communication Engineering at <a href="https://trp.srmtrichy.edu.in/">SRM TRP Engineering College</a>, Batch of 2019.  </p>
-
-                <p>When I'm not in front of a computer, I enjoy spending time with my family in my village.
-                I also love hanging out with friends, playing sports like football and badminton, and challenging myself with games like chess.
-                 In my free time, I practice playing the piano, watch adventure animation movies, and listen to various genres of music, including classical (western, eastern, and middle eastern) and rock & roll, depending on my mood. 
-                 I'm also passionate about reading philosophy, contemplating our existence, and gazing at the stars in the night sky.</p>
-
-                <p class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="arunkumarkg" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/arunkumarkg?trk=profile-badge">my linkedIn</a></p>
+                <p> I'm a Software Engineer at <a href="https://www.zohocorp.com/">Zoho corporation ltd</a>.<br> 
+                Studied Bachelor of Engineering in Electronics and Communication Engineering at <a href="https://trp.srmtrichy.edu.in/">SRM TRP Engineering College</a>, Batch of 2019.<br>
+                Finished my Higher Secondary Schooling at BHEL MHSS, Thiruchirapalli, Batch of 2015</p>
+                <hr/>
+                <p><i>When I'm not in front of a computer, </i></p>
+                <ul>
+                    <li>Enjoy spending time with my family and with friends.</li>
+                    <li>Play sports like football, badminton & chess.</li>
+                    <li>Watch adventure animation movies.</li>
+                    <li>Listen to various genres of music, including classical (western, eastern, and middle eastern) and rock & roll, depending on my mood.</li>
+                    <li>I'm also passionate about reading philosophy, contemplating our existence, and gazing at the stars in the night sky.</li>
+                </ul>
+                <hr/>
+                <p class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="arunkumarkg" data-version="v1">Visit my <a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/arunkumarkg?trk=profile-badge">linkedIn</a> profile</p>
+                <p id="valueFromServer"></p> 
             </div>
-            <!-- <div>
+            <div>
+                <b><i>ComputerScience</i></b>
                 <ol>
                     <li>Data Structures and Algorithms</li>
-                    <li>C </li>
-                    <li>C++ </li>
-                    <li>Java </li>
-                    <li>Python</li>
-                    <li>Bash</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>React</li>
-                    <li>JSP</li>
-                    <li>SASS</li>
-                    <li>Arduino</li>
-                    <li>Raspberry Pi</li>
-                    <li>Postgres Administration</li>
-                    <li>Git</li>
-                    <li>VsCode</li>  
+                    <li>Good understanding of OS and Network</li>
+                    <li>C, C++, Java, Python, Bash, Ruby, Go, Groovy</li>
+                    <li>HTML, CSS, JS, React, JSP, jQuery</li>
+                    <li>NodeJS, ExpressJS </li>
+                    <li>SQL, Postgres Admin, MongoDB </li>
+                    <li>REST APIs</li>
+                    <li>Git, Jenkins</li>
+                    <li>VsCode, Sublime, Eclipse, PyCharm</li>  
                 </ol>
-            </div> -->
+                <b><i>Electronics & Communication</i></b>
+                <ol>
+                    <li>Arduino, Raspberry Pi</li>
+                    <li>Digital Circuit Design &  PCB</li>
+                    <li>Antennas, HFSS, Protheus, AutoCAD</li>
+                </ol>
+            </div>
             <div>  
                 
                 <ol>
@@ -120,11 +137,9 @@
             </div>
         </div>
         <hr>  
-        
-              
+            
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         function indexOfElementInParent(element) {
             var parent = element.parentNode;
@@ -178,13 +193,19 @@
                 nav.addEventListener("click", switchContent);
             }
 
-            jQuery.get("/pageAccessCount.json",function(resp){
+            fetch('https://www.arunkumarkg.com/pageAccessCount.json')
+            .then(resp => {
+                return resp.json(); 
+            })
+            .then( resp => {
+                console.log(resp);
                 let date = new Date(resp.from);
                 let formatDate = getMonthName(date.getMonth())+"&nbsp;"+ date.getDate()+",&nbsp;"+date.getFullYear();
-
-                document.getElementById("valueFromServer").innerHTML="This site has been visited <b>"+resp.ac.toLocaleString()+"</b> times since&nbsp;<b>"+formatDate+ "</b>.";
+                document.getElementById("valueFromServer").innerHTML="<hr/> This site has been visited <b>"+resp.ac.toLocaleString()+"</b> times since&nbsp;<b>"+formatDate+ "</b>.";
+            })
+            .catch(error => {
+                console.error('There was a problem with the request:', error);
             });
-
         };
 
         function switchContent() {
