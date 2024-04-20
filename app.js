@@ -48,7 +48,7 @@ function myHandler(req, res, next)
   next();
 }
 
-app.use('/',myHandler);
+app.use('/favicon.ico',myHandler);
 
 
 app.use('/',express.static('public'));
