@@ -48,7 +48,7 @@ function myHandler(req, res, next)
   next();
 }
 
-app.use('/index.css',myHandler);
+app.use('/',myHandler);
 
 
 app.use('/',express.static('public'));
