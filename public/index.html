@@ -193,7 +193,7 @@
                 nav.addEventListener("click", switchContent);
             }
 
-            fetch('https://www.arunkumarkg.com/pageAccessCount.json')
+            fetch(window.location.href+'/pageAccessCount.json')
             .then(resp => {
                 return resp.json(); 
             })
