@@ -78,8 +78,8 @@ if (PORT == undefined)
     const httpsServer = https.createServer(options, app);
     httpsServer.listen(443, (error) => errorhandler(error,443,"https")); 
 
-    const httpServer = http.createServer(options, app);
-    httpServer.listen(80, (error) => errorhandler(error,80,"http"))
+    //const httpServer = http.createServer(options, app);
+    //httpServer.listen(80, (error) => errorhandler(error,80,"http"))
 }
 else
 {   
