@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title> Arun's HomePage</title>
+    
     <!-- <link rel="stylesheet" href="index.css"> -->
     <link rel="icon"  href="/favicon.ico">
     <meta charset="UTF-8">
@@ -11,6 +12,7 @@
         .heading {
             background-color: hsl(66, 100%, 98%);
             padding: 3px;
+            justify-content: center;
         }
 
         body {
@@ -63,14 +65,27 @@
         a:active {
             color: rgb(168, 168, 168);
         }
+
+        .round-image {
+            width: 140x;  /* Adjust the width */
+            height: 140px; /* Adjust the height to make it a square */
+            border-radius: 50%; /* Makes the image round */
+            object-fit: cover; 
+        }
+
     </style>
   </head>
   <body>  
     <div id="root">
-        <div class="heading">
-            <h1 id="heading"> Arun's HomePage </h1>
-            <h3> Welcome to my page !! &#128522; </h3>
-            
+        <div class="heading" style="display: flex; width: 100%;">
+
+                <img src="ECR.jpeg" alt="Arun Face" class="round-image"></img> 
+
+            <div class="container"  >
+                <h1 id="heading" > Arun's HomePage </h1>
+                <h3> Welcome to my page !! &#128522; </h3>
+                
+            </div>
         </div>
         
         <ol class="nav">
@@ -99,10 +114,11 @@
                     <li>C, C++, Java, Python, Bash, Ruby, Go, Groovy</li>
                     <li>HTML, CSS, JS, React, JSP, jQuery</li>
                     <li>NodeJS, ExpressJS </li>
-                    <li>SQL, Postgres Admin, MongoDB </li>
+                    <li>SQL, PostgreSQL, MongoDB </li>
                     <li>REST APIs</li>
                     <li>Git, Jenkins</li>
                     <li>VsCode, Sublime, Eclipse, PyCharm</li>  
+                    <li>Jira</li>
                 </ol>
                 <b><i>Electronics & Communication</i></b>
                 <ol>
@@ -122,7 +138,7 @@
                     <li>Operating Systems - Three Easy Pieces.</li>
                     <li>Algorithms to liveby.</li>
                     <li>Discrete Mathematics and its Applications.</li>
-		    <li>Designing Data Intensive Applications.</li>
+		            <li>Designing Data Intensive Applications.</li>
                 </ol>
 
             </div>
@@ -183,6 +199,8 @@
                 const nav = navList[i];
                 nav.addEventListener("click", switchContent);
             }
+
+
 
             fetch(window.location.href+'/pageAccessCount.json')
             .then(resp => {

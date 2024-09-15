@@ -1,2 +1,12 @@
 Certificate is saved at: /etc/letsencrypt/live/arunkumarkg.com/fullchain.pem
 Key is saved at:         /etc/letsencrypt/live/arunkumarkg.com/privkey.pem
+
+SSL certificates handling 
+#########################
+sudo certbot certificates
+sudo certbot renew
+
+
+Docker start
+#############
+docker run -p 4000:3000 arunkumarkg/myhomepage:2
