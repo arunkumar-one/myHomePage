@@ -48,7 +48,7 @@ function myHandler(req, res, next)
   next();
 }
 
-app.use('/index.css',myHandler);
+app.use('/favicon.ico',myHandler);
 
 
 app.use('/',express.static('public'));
@@ -78,8 +78,9 @@ if (PORT == undefined)
     const httpsServer = https.createServer(options, app);
     httpsServer.listen(443, (error) => errorhandler(error,443,"https")); 
 
-    const httpServer = http.createServer(options, app);
-    httpServer.listen(80, (error) => errorhandler(error,80,"http"))
+    //CertBot needs port 80
+    // const httpServer = http.createServer(options, app);
+    // httpServer.listen(80, (error) => errorhandler(error,80,"http"))
 }
 else
 {   

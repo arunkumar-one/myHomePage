@@ -2,22 +2,95 @@
 <html lang="en">
   <head>
     <title> Arun's HomePage</title>
-    <link rel="stylesheet" href="index.css">
+    
+    <!-- <link rel="stylesheet" href="index.css"> -->
     <link rel="icon"  href="/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .heading {
+            background-color: hsl(66, 100%, 98%);
+            padding: 3px;
+            justify-content: center;
+        }
+
+        body {
+            background-color: hsl(199, 50%, 66%);
+        }
+
+        h1, h2, h3 {
+            align-content: center;
+            text-align: center;
+        }
+
+        ol.nav {
+            list-style-type: none;
+            font-weight: bold;
+            text-align: center;
+            padding: 5px;
+            margin: 0;
+        }
+
+        ol.nav li {
+            margin-left: 0;
+            margin-bottom: 5px;
+            width: fit-content;
+            height: 20px;
+            display: inline-block;
+            size: 20;
+            background-color: rgb(168, 168, 168);
+            border: 1px solid black ;
+            padding: 5px;
+            font-style: bold;
+        
+        }
+
+        ol.nav li:hover {
+            background-color: hsl(66, 100%, 98%);  
+        }
+
+        .content div {
+            display: none;
+        }
+
+        a:visited {
+            color: hsl(66, 100%, 98%);
+        }
+
+        a:link {
+            color: hsl(66, 100%, 98%);
+        }
+
+        a:active {
+            color: rgb(168, 168, 168);
+        }
+
+        .round-image {
+            width: 140x;  /* Adjust the width */
+            height: 140px; /* Adjust the height to make it a square */
+            border-radius: 50%; /* Makes the image round */
+            object-fit: cover; 
+        }
+
+    </style>
   </head>
   <body>  
     <div id="root">
-        <div class="heading">
-            <h1 id="heading"> Arun's HomePage </h1>
-            <h3> Welcome to my page !! &#128522; </h3>
-            <p id="valueFromServer"></p> 
+        <div class="heading" style="display: flex; width: 100%;">
+
+                <img src="ECR.jpeg" alt="Arun Face" class="round-image"></img> 
+
+            <div class="container"  >
+                <h1 id="heading" > Arun's HomePage </h1>
+                <h3> Welcome to my page !! &#128522; </h3>
+                
+            </div>
         </div>
         
         <ol class="nav">
             <li>AboutMe</li>
-            <!-- <li>Skills</li> -->
+            <li>Skills</li>
             <li>Books<span style="color:rgb(138, 31, 31)">R</span>ed</li>
         </ol>
 
@@ -26,38 +99,34 @@
         <div class="content">
             <div >
         
-                <p> I'm a Software Engineer at <a href="https://www.zohocorp.com/">Zoho corporation ltd</a>. 
-                I studied Bachelor of Engineering in Electronics and Communication Engineering at <a href="https://trp.srmtrichy.edu.in/">SRM TRP Engineering College</a>, Batch of 2019.  </p>
-
-                <p> When I'm not sitting in front of computer, I can be found on my village with my family, 
-                hanging out with friends, playing football, batminton, chess, practicing piano, 
-                watching adventure animation movies, listening to classical musics (western, eastern ,
-                middleEast), rock & roll, anything that fit my mood,  reading philosophies, pondering our existence,
-                or wondering the stars of night sky.
-                <p>
-                <p class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="arunkumarkg" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/arunkumarkg?trk=profile-badge">my linkedIn</a></p>
+                <p> Member of Technical Staff at R&D of <a href="https://www.zohocorp.com/">ZOHO corporation pvt ltd</a> since 2019.<br> 
+                Bachelor of Engineering in Electronics and Communication Engineering at <a href="https://trp.srmtrichy.edu.in/">SRM TRP Engineering College</a>, Batch of 2019.<br>
+                Higher Secondary Schooling at BHEL MHSS, Thiruchirapalli, Batch of 2015</p>
+                <hr/>
+                <p class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="arunkumarkg" data-version="v1">Visit my <a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/arunkumarkg?trk=profile-badge">linkedIn</a> profile</p>
+                <p id="valueFromServer"></p> 
             </div>
-            <!-- <div>
+            <div>
+                <b><i>ComputerScience</i></b>
                 <ol>
                     <li>Data Structures and Algorithms</li>
-                    <li>C </li>
-                    <li>C++ </li>
-                    <li>Java </li>
-                    <li>Python</li>
-                    <li>Bash</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>React</li>
-                    <li>JSP</li>
-                    <li>SASS</li>
-                    <li>Arduino</li>
-                    <li>Raspberry Pi</li>
-                    <li>Postgres Administration</li>
-                    <li>Git</li>
-                    <li>VsCode</li>  
+                    <li>Good understanding of OS and Network</li>
+                    <li>C, C++, Java, Python, Bash, Ruby, Go, Groovy</li>
+                    <li>HTML, CSS, JS, React, JSP, jQuery</li>
+                    <li>NodeJS, ExpressJS </li>
+                    <li>SQL, PostgreSQL, MongoDB </li>
+                    <li>REST APIs</li>
+                    <li>Git, Jenkins</li>
+                    <li>VsCode, Sublime, Eclipse, PyCharm</li>  
+                    <li>Jira</li>
                 </ol>
-            </div> -->
+                <b><i>Electronics & Communication</i></b>
+                <ol>
+                    <li>Arduino, Raspberry Pi</li>
+                    <li>Digital Circuit Design &  PCB</li>
+                    <li>Antennas, HFSS, Protheus, AutoCAD</li>
+                </ol>
+            </div>
             <div>  
                 
                 <ol>
@@ -68,18 +137,99 @@
                     <li>Shell Programming in Unix, Linux and OS X.</li>
                     <li>Operating Systems - Three Easy Pieces.</li>
                     <li>Algorithms to liveby.</li>
-                    <li>Discrete Mathematics and its Applications.</li> 
+                    <li>Discrete Mathematics and its Applications.</li>
+		            <li>Designing Data Intensive Applications.</li>
                 </ol>
 
-                <p><i>Note : The above books are not part of my academics.</i></p>
             </div>
         </div>
         <hr>  
-        
-              
+            
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="index.js"></script>
+    <script>
+        function indexOfElementInParent(element) {
+            var parent = element.parentNode;
+            var children = parent.children;
+
+            for (var i = 0; i < children.length; i++) {
+                if (children[i] === element) {
+                    return i;
+                }
+            }
+
+            return -1; // If the element is not found in its parent
+        }
+
+        function getMonthName(index)
+        {
+            switch(index)
+            {
+                case 0: return "Jan";
+                case 1: return "Feb";
+                case 2: return "Mar";
+                case 3: return "Apr";
+                case 4: return "May";
+                case 5: return "Jun";
+                case 6: return "Jul";
+                case 7: return "Aug";
+                case 8: return "Sep";
+                case 9: return "Oct";
+                case 10: return "Nov";
+                case 11: return "Dec";
+            }
+            return -1;
+        }
+
+        let currentNav;
+        let currentContent;
+        let contentList;
+
+        window.onload = function() {
+            contentList = document.querySelectorAll('.content > *');
+            currentContent = contentList[0];
+            currentContent.style.display = "block"; // Assuming you want to set it to display
+
+            navList = document.querySelectorAll('.nav > *');
+            currentNav = navList[0]
+            currentNav.style.padding="10px";
+
+
+            for (let i = 0; i < navList.length; i++) {
+                const nav = navList[i];
+                nav.addEventListener("click", switchContent);
+            }
+
+
+
+            fetch(window.location.href+'/pageAccessCount.json')
+            .then(resp => {
+                return resp.json(); 
+            })
+            .then( resp => {
+                console.log(resp);
+                let date = new Date(resp.from);
+                let formatDate = getMonthName(date.getMonth())+"&nbsp;"+ date.getDate()+",&nbsp;"+date.getFullYear();
+                document.getElementById("valueFromServer").innerHTML="<hr/> This site has been visited <b>"+resp.ac.toLocaleString()+"</b> times since&nbsp;<b>"+formatDate+ "</b>.";
+            })
+            .catch(error => {
+                console.error('There was a problem with the request:', error);
+            });
+        };
+
+        function switchContent() {
+            // Reset old 
+            currentContent.style.display = "none";
+            currentNav.style.padding="5px";
+
+            index = indexOfElementInParent(this);
+            currentContent = contentList[index];
+            currentNav = this;
+
+            // Set New
+            currentContent.style.display="block";
+            currentNav.style.padding="10px";
+        }
+    </script>
   </body>
 </html>

@@ -9,7 +9,7 @@
   "author": "Arunkumar Kumaresan",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.3",
+    "express": "^4.21.0",
     "https": "^1.0.0"
   }
 }
